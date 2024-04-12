@@ -6,15 +6,16 @@
  *
  * Return: The hash value generated
  */
-unsigned long int hash_djb2(const unsigned char *str)
+unsigned long int simple_hash(const unsigned char *str)
 {
-    unsigned long int hash;
-    int c;
+    unsigned long int hash = 0;
+    int i = 0;
 
-    hash = 5381;
-    while ((c = *str++))
+    while (str[i] != '\0')
     {
-        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+        hash += str[i];
+        i++;
     }
-    return (hash);
+
+    return hash;
 }
